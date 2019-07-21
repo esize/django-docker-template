@@ -11,6 +11,8 @@ services:
       - "8000:8000"
     command:
       "gunicorn --workers=2 --bind=0.0.0.0:8000 proj.wsgi:application"
+    volumes:
+      - /static:/statoc
 
   nginx:
     image: nginx:1.17
@@ -19,5 +21,6 @@ services:
       - "80:80"
     volumes:
       - ./nginx:/etc/nginx/conf.d
+      - /static:/static
     depends_on:
       - app
