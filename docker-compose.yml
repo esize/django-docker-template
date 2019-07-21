@@ -13,6 +13,8 @@ services:
       "gunicorn --workers=2 --bind=0.0.0.0:8000 proj.wsgi:application"
     volumes:
       - /static:/statoc
+    depends_on:
+      - db
 
   nginx:
     image: nginx:1.17
@@ -24,3 +26,7 @@ services:
       - /static:/static
     depends_on:
       - app
+
+  db: 
+    image: postgres
+    
