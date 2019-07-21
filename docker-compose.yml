@@ -3,7 +3,7 @@ version: "3"
 services:
   app:
     build: .
-    container_name: django-gunicorn
+    container_name: django
     restart: always
     env_file:
       - django.env
@@ -16,7 +16,7 @@ services:
 
   nginx:
     image: nginx:1.17
-    container_name: ngx
+    container_name: nginx
     ports:
       - "80:80"
     volumes:
